@@ -150,6 +150,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 divider(),
 
                 buildEditableInfoRow(
+                  icon: Icons.account_balance_wallet,
+                  label: 'الرصيد',
+                  value: "${user?.balance.toStringAsFixed(2) ?? '0.00'} ل.س",
+                  width: width,
+                  editable: false,
+                ),
+                divider(),
+
+
+                buildEditableInfoRow(
                   icon: Icons.phone,
                   label: 'رقم الهاتف',
                   value: user?.phone ?? '',

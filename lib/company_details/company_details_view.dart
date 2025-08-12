@@ -137,6 +137,17 @@ class CompanyDetails extends StatelessWidget {
                               Text("  رقم الهاتف للتواصل : ${company.phone }", style: TextStyle(fontSize: 14)),
                             ],
                           ),
+                          const SizedBox(height: 10),
+                          Row(
+                            children: [
+                              Icon(Icons.monetization_on, size: 18, color: Colors.orange),
+                              SizedBox(width: 8),
+                              Text(
+                                " تكلفة الفحص: ${company.costOfExamination} ل.س",
+                                style: TextStyle(fontSize: 14),
+                              ),
+                            ],
+                          ),
                           const SizedBox(height: 20),
                           const Divider(),
 
