@@ -11,6 +11,8 @@ import '../myprojects/get_projects_binding.dart';
 import '../myprojects/get_projects_screen.dart';
 import '../payments/charge_money/charge_money_page.dart';
 import '../payments/charge_money/payment_binding.dart';
+import '../payments/transaction/transaction_binding.dart';
+import '../payments/transaction/transaction_page.dart';
 import '../profile/profile_binding.dart';
 import '../profile/profile_page.dart';
 import '../search/search_binding.dart';
@@ -37,6 +39,8 @@ class AppRoutes {
   static const projectpage = '/projectpage';
   static const payment_methode = '/payment_methode_page';
   static const favourite = '/favourite';
+  static const transaction = '/transactions';
+
 
 
   static final routes = [
@@ -93,6 +97,11 @@ class AppRoutes {
       name: favourite,
       page: () => FavoritePage(),
       binding: FavouriteBinding(),
+    ),
+    GetPage(
+      name: transaction,
+      page: () => TransactionsPage(),
+      binding: TransactionsBinding(),
     ),
     GetPage(name: main, page: () => const BottomNav()),
 

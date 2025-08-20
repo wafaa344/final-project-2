@@ -43,7 +43,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: AppColors.background_color,
+        backgroundColor: AppColors.background_orange,
         resizeToAvoidBottomInset: true,
 
         body: Obx(() {
@@ -233,6 +233,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   TextField(
+
                     controller: currentController,
                     obscureText: true,
                     decoration: const InputDecoration(labelText: 'كلمة السر الحالية',

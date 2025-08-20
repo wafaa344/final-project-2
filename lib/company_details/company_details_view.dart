@@ -20,6 +20,8 @@ class CompanyDetails extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
+        backgroundColor: AppColors.background_orange,
+
         body: Stack(
           children: [
             Container(
@@ -369,8 +371,10 @@ class CompanyDetails extends StatelessWidget {
                       Navigator.pop(context);
                       final serviceIds = selectedServices.map((e) => e.id).toList();
 
-                      Get.toNamed('/survey', arguments: serviceIds);
-                    } else {
+                      Get.toNamed('/survey', arguments: {
+                        'companyId': company.id,
+                        'serviceIds': serviceIds,
+                      });                    } else {
                       Get.snackbar("تنبيه", "يرجى اختيار خدمة واحدة على الأقل",
                           backgroundColor: Colors.orange.shade100);
                     }

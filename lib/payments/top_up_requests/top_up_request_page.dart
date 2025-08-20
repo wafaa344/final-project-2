@@ -59,6 +59,8 @@ class TopUpRequestsPage extends StatelessWidget {
     return Directionality(
       textDirection: ui.TextDirection.rtl,
       child: Scaffold(
+        backgroundColor: AppColors.background_orange,
+
         appBar: AppBar(
           title: Text(
             "طلبات شحن المحفظة",

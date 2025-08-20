@@ -11,6 +11,7 @@ class FavoritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background_orange,
       appBar: AppBar(
         title: Text('المفضلة'),
         centerTitle: true,

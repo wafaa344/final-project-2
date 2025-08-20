@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rebuild_flat/basics/app_colors.dart';
 import 'package:rebuild_flat/payments/top_up_requests/top_up_request_page.dart';
 
@@ -12,8 +13,11 @@ class StartWalletPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.background_orange,
+
       appBar: AppBar(
-        title: Text('المحفظة'),
+        title: Text('المحفظة',   style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
+        ),
         backgroundColor:AppColors.primaryColor, // برتقالي ثابت
         elevation: 4, // يظهر ظل واضح
         centerTitle: true,

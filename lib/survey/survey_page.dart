@@ -15,6 +15,14 @@ class SurveyPage extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
 
+    final args = Get.arguments as Map<String, dynamic>;
+
+    final int companyId = args['companyId'] as int;
+
+    // 👇 التصحيح هون
+    final List<int> serviceIds = (args['serviceIds'] as List).map((e) => e as int).toList();
+
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('الاستبيان'),
@@ -114,6 +122,7 @@ class SurveyPage extends StatelessWidget {
             costController.calculateCostOnly(request).then((price) {
               Get.toNamed('/cost', arguments: {
                 'price': price,
+                'companyId': companyId, // تمرير ID الشركة
                 'onConfirm': () {
                   Get.snackbar("تم", "تم تأكيد الطلب بنجاح");
                 },

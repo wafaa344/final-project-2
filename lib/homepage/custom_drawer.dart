@@ -6,6 +6,7 @@ import '../favourite/favourite_page.dart';
 import '../logout/logout_controller.dart';
 import '../myprojects/get_projects_screen.dart';
 import '../payments/start_wallet_page.dart';
+import '../payments/transaction/transaction_page.dart';
 import '../profile/profile_page.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -16,6 +17,8 @@ class CustomDrawer extends StatelessWidget {
     final LogoutController logoutController = Get.find();
 
     return Drawer(
+      backgroundColor: AppColors.background_orange,
+
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: ListView(
@@ -25,14 +28,28 @@ class CustomDrawer extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppColors.primaryColor,
               ),
-              child: const Text(
-                'قائمة كرافتي',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Image.asset(
+                      "assets/engineer.png",
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  const Text(
+                    "Crafty",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
             ),
+
             ListTile(
               leading: const Icon(Icons.person),
               title: const Text('الملف الشخصي'),
@@ -42,7 +59,7 @@ class CustomDrawer extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.person),
+              leading: const Icon(Icons.precision_manufacturing),
               title: const Text('مشاريعي'),
               onTap: () {
                 // Get.to(MyProjectsScreen());
@@ -67,12 +84,21 @@ class CustomDrawer extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.padding),
+              title: const Text('معاملات'),
+              onTap: () {
+                // Get.to(TransactionsPage());
+                Get.toNamed(AppRoutes.transaction);
+              },
+            ),
+            ListTile(
               leading: const Icon(Icons.logout),
               title: const Text('تسجيل الخروج'),
               onTap: () {
                 logoutController.logout();
               },
             ),
+
           ],
         ),
       ),

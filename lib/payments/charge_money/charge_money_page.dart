@@ -13,9 +13,10 @@ class PaymentMethodsPage extends StatelessWidget {
     final controller = Get.find<PaymentController>();
 
     return Scaffold(
-      backgroundColor: Color(0xFFF5F7FA),
+      backgroundColor: AppColors.background_orange,
       appBar: AppBar(
-        title: Text('شحن المحفظة'),
+        title: Text('شحن المحفظة', style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
+        ),
     backgroundColor:AppColors.primaryColor, // برتقالي ثابت
     elevation: 4, // يظهر ظل واضح
     centerTitle: true,

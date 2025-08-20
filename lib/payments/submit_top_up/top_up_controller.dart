@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:rebuild_flat/basics/app_colors.dart';
 import 'package:rebuild_flat/native_service/secure_storage.dart';
@@ -51,14 +52,61 @@ class TopUpController extends GetxController {
 
       if (success) {
         Get.defaultDialog(
-          title: "نجاح" ,
-          middleText: "تم طلب الشحن بنجاح\nبانتظار موافقة الأدمن ليتم شحن الرصيد",
-          confirm: ElevatedButton(
-            onPressed: () => Get.back(), // إغلاق الـ Dialog
-            child: Text("حسناً",style: TextStyle(color: AppColors.primaryColor),),
+          backgroundColor: AppColors.background_color,
+          title: "",
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // صورة نجاح
+              Image.asset(
+                'assets/img_1.png', // ضع مسار صورتك هنا
+                width: 100,
+                height: 100,
+              ),
+              SizedBox(height: 12),
+              // عنوان
+              Text(
+                "نجاح العملية",
+                style: GoogleFonts.cairo(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: AppColors.primaryColor,
+                ),
+              ),
+              SizedBox(height: 8),
+              // نص التفاصيل
+              Text(
+                "تم طلب الشحن بنجاح\nبانتظار موافقة الأدمن ليتم شحن الرصيد",
+                style: GoogleFonts.cairo(
+                  fontSize: 16,
+                  color: Colors.black87,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 16),
+              // زر الإغلاق
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primaryColor.withOpacity(0.1),
+                  foregroundColor: AppColors.primaryColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                onPressed: () => Get.back(),
+                child: Text(
+                  "حسناً",
+                  style: GoogleFonts.cairo(
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.primaryColor,
+                  ),
+                ),
+              ),
+            ],
           ),
         );
-      } else {
+      }
+      else {
         Get.snackbar("خطأ", "فشل في إرسال طلب الشحن");
       }
     } catch (e) {

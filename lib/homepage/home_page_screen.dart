@@ -17,7 +17,7 @@ class HomePage extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.background_color,
+        backgroundColor: AppColors.background_orange,
         drawer: const CustomDrawer(), // يتم فتحه من HeaderWidget
         body: Column(
           children: [

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rebuild_flat/project_stages/project_stage_model.dart';
 import '../basics/app_colors.dart';
+import '../payments/confirm_stage/confirm_stage_service.dart';
 import 'objection/objection_controller.dart';
 import 'objection/service_objection.dart';
 
@@ -21,6 +23,8 @@ class ProjectStageDetailScreen extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
+        backgroundColor: AppColors.background_orange,
+
         body: Stack(
           children: [
             // ✅ صورة غلاف ثابتة من الأصول
@@ -238,7 +242,8 @@ class ProjectStageDetailScreen extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(width: 12),
-                              Expanded(
+                              if (stage.isConfirmed == 0)
+                                Expanded(
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                     backgroundColor: AppColors.primaryColor,
@@ -247,12 +252,105 @@ class ProjectStageDetailScreen extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(12),
                                     ),
                                   ),
-                                  onPressed: () {
-                                    // تنفيذ الإجراء
+                                  onPressed: () async {
+                                    try {
+                                      // 🔄 إظهار مؤشر التحميل
+                                      showDialog(
+                                        context: context,
+                                        barrierDismissible: false,
+                                        builder: (_) => const Center(child: CircularProgressIndicator()),
+                                      );
+
+                                      // 📨 استدعاء API الدفع
+                                      final success = await StagePaymentService.confirmStage(stage.id);
+
+                                      Navigator.pop(context); // إغلاق اللودينغ
+
+                                      if (success) {
+                                        showDialog(
+
+                                          context: context,
+                                          builder: (context) => AlertDialog(
+                                            backgroundColor: AppColors.background_color,
+                                            shape: RoundedRectangleBorder(
+
+                                              borderRadius: BorderRadius.circular(15),
+                                            ),
+                                            title: Row(
+                                              children: [
+                                                Icon(Icons.check_circle, color: Colors.green, size: 28),
+                                                SizedBox(width: 8),
+                                                Text(
+                                                  "نجاح العملية",
+                                                  style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
+                                                ),
+                                              ],
+                                            ),
+                                            content: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                Image.asset(
+                                                  'assets/img_1.png', // ضع مسار صورتك هنا
+                                                  width: 100,
+                                                  height: 100,
+                                                ),
+                                                SizedBox(height: 12),
+                                                Text(
+                                                  "تم تأكيد ودفع المرحلة بنجاح.",
+                                                  style: GoogleFonts.cairo(),
+                                                ),
+                                              ],
+                                            ),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context); // إغلاق الـ Dialog
+                                                  Navigator.pop(context); // رجوع لقائمة المراحل
+                                                },
+                                                child: Text(
+                                                  "موافق",
+                                                  style: GoogleFonts.cairo(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: AppColors.primaryColor,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      }
+
+                                    } catch (e) {
+                                      Navigator.pop(context); // إغلاق اللودينغ
+
+                                      // ❌ Dialog خطأ
+                                      showDialog(
+                                        context: context,
+                                        builder: (context) => AlertDialog(
+                                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+                                          title: const Row(
+                                            children: [
+                                              Icon(Icons.error, color: Colors.red, size: 28),
+                                              SizedBox(width: 8),
+                                              Text("خطأ"),
+                                            ],
+                                          ),
+                                          content: Text(e.toString()),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(context),
+                                              child: const Text("حسناً"),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    }
                                   },
                                   child: const Text("تأكيد", style: TextStyle(color: Colors.white)),
                                 ),
-                              ),
+                              )
+
+
                             ],
                           ),
 

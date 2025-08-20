@@ -14,7 +14,7 @@ class MyProjectsScreen extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: AppColors.background_color,
+        backgroundColor: AppColors.background_orange,
         appBar: AppBar(
           backgroundColor: AppColors.primaryColor,
           centerTitle: true,
