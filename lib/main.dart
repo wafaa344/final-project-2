@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rebuild_flat/notification/notification_service.dart';
 import 'Routes/routes.dart';
 import 'basics/app_colors.dart';
+import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-
-  //Stripe.publishableKey = ServerConfiguration.public_key;
-  //await Stripe.instance.applySettings();
-
+  // 🔹 تهيئة Firebase
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await  FirebaseMsg().initFcm();
   runApp(const MyApp());
 }
 

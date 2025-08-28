@@ -9,6 +9,8 @@ import '../login/loginscreen.dart';
 import '../logout/logout_binding.dart';
 import '../myprojects/get_projects_binding.dart';
 import '../myprojects/get_projects_screen.dart';
+import '../notification/show_notification/show_not_binding.dart';
+import '../notification/show_notification/show_not_page.dart';
 import '../payments/charge_money/charge_money_page.dart';
 import '../payments/charge_money/payment_binding.dart';
 import '../payments/transaction/transaction_binding.dart';
@@ -16,6 +18,8 @@ import '../payments/transaction/transaction_page.dart';
 import '../profile/profile_binding.dart';
 import '../profile/profile_page.dart';
 import '../search/search_binding.dart';
+import '../show_orders/show_order_binding.dart';
+import '../show_orders/show_orders_page.dart';
 import '../signup/signup_binding.dart';
 import '../signup/signup_screen.dart';
 import '../splash/splash_binding.dart';
@@ -40,6 +44,8 @@ class AppRoutes {
   static const payment_methode = '/payment_methode_page';
   static const favourite = '/favourite';
   static const transaction = '/transactions';
+  static const showorders = '/showorders';
+  static const shownotification = '/shownotification';
 
 
 
@@ -102,6 +108,16 @@ class AppRoutes {
       name: transaction,
       page: () => TransactionsPage(),
       binding: TransactionsBinding(),
+    ),
+    GetPage(
+      name: showorders,
+      page: () => ShowOrdersPage(),
+      binding: ShowOrderBinding(),
+    ),
+    GetPage(
+      name: shownotification,
+      page: () => ShowNotificationsPage(),
+      binding: ShowNotificationBinding(),
     ),
     GetPage(name: main, page: () => const BottomNav()),
 

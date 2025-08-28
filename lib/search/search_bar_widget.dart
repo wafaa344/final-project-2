@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../Routes/routes.dart';
+import '../notification/show_notification/show_not_page.dart';
 import '../search/search_controller.dart';
 
 class SearchBarWidget extends StatelessWidget {
@@ -44,7 +46,13 @@ class SearchBarWidget extends StatelessWidget {
           ),
         ),
         SizedBox(width: width * 0.03),
-        Container(
+        GestureDetector(
+            onTap: () {
+              Get.toNamed(AppRoutes.shownotification);
+
+              // Get.to(() => const ShowNotificationsPage());
+            },
+     child:   Container(
           padding: EdgeInsets.all(width * 0.025),
           decoration: BoxDecoration(
             color: Colors.white,
@@ -59,7 +67,8 @@ class SearchBarWidget extends StatelessWidget {
           ),
           child: Icon(Icons.notifications,
               size: width * 0.065, color: const Color(0xfff77520)),
-        ),
+
+        )),
       ],
     );
   }

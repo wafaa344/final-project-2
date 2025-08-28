@@ -8,6 +8,7 @@ import '../myprojects/get_projects_screen.dart';
 import '../payments/start_wallet_page.dart';
 import '../payments/transaction/transaction_page.dart';
 import '../profile/profile_page.dart';
+import '../show_orders/show_orders_page.dart';
 
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({super.key});
@@ -84,8 +85,16 @@ class CustomDrawer extends StatelessWidget {
               },
             ),
             ListTile(
+              leading: const Icon(Icons.home_work_outlined),
+              title: const Text('طلبات الكشف'),
+              onTap: () {
+                // Get.to(ShowOrdersPage());
+                Get.toNamed(AppRoutes.showorders);
+              },
+            ),
+            ListTile(
               leading: const Icon(Icons.padding),
-              title: const Text('معاملات'),
+              title: const Text('المعاملات'),
               onTap: () {
                 // Get.to(TransactionsPage());
                 Get.toNamed(AppRoutes.transaction);
@@ -100,6 +109,7 @@ class CustomDrawer extends StatelessWidget {
             ),
 
           ],
+
         ),
       ),
     );
