@@ -20,15 +20,26 @@ class OrderAnswer {
 
 class OrderRequest {
   final int companyId;
+  final double latitude;
+  final double longitude;
   final List<OrderAnswer> answers;
 
-  OrderRequest({required this.companyId, required this.answers});
+  OrderRequest({
+    required this.companyId,
+    required this.latitude,
+    required this.longitude,
+    required this.answers,
+  });
 
-  Map<String, dynamic> toJson() => {
-    'company_id': companyId,
-    'answers': answers.map((a) => a.toJson()).toList(),
-  };
+  Map<String, dynamic> toJson() =>
+      {
+        'company_id': companyId,
+        'latitude': double.parse(latitude.toStringAsFixed(4)),
+        'longitude': double.parse(longitude.toStringAsFixed(4)),
+        'answers': answers.map((a) => a.toJson()).toList(),
+      };
 }
+
 
 class OrderResponse {
   final bool status;
@@ -61,11 +72,15 @@ class OrderService {
       final data = jsonDecode(response.body);
       print("Response code: ${response.statusCode}");
       print("Response body: ${response.body}");
+      print(jsonEncode(request.toJson()));
 
       return OrderResponse.fromJson(data);
 
     } else {
+
       print("Response code: ${response.statusCode}");
+      print(jsonEncode(request.toJson()));
+
       print("Response body: ${response.body}");
 
       throw Exception("فشل في إنشاء الطلب");

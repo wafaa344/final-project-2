@@ -119,7 +119,6 @@ class AppRoutes {
       page: () => ShowNotificationsPage(),
       binding: ShowNotificationBinding(),
     ),
-    GetPage(name: main, page: () => const BottomNav()),
 
 
   ];

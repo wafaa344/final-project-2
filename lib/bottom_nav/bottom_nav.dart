@@ -1,42 +1,50 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../Routes/routes.dart';
+import '../basics/app_colors.dart';
+import '../payments/start_wallet_page.dart';
 
+class CustomBottomBar extends StatelessWidget {
+  final int currentIndex;
 
-class BottomNav extends StatelessWidget {
-  const BottomNav({super.key});
+  const CustomBottomBar({super.key, required this.currentIndex});
+
+  void onTabTapped(int index) {
+    switch (index) {
+      case 0:
+        Get.offAllNamed(AppRoutes.home); // الصفحة الرئيسية
+        break;
+      case 1:
+        Get.offAllNamed(AppRoutes.projectpage); // مشاريعي
+        break;
+      case 2:
+        Get.offAll( StartWalletPage());        break;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final RxInt pageIndex = 0.obs;
-
-    final pages = [
-      //const HomePage(),
-      const Center(child: Text('مشروعي', style: TextStyle(fontSize: 24))),
-      const Center(child: Text('حسابي', style: TextStyle(fontSize: 24))),
-    ];
-
-    return Obx(() => Scaffold(
-      bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.grey[200]!,
-        color: const Color(0xfff77520),
-        buttonBackgroundColor: Colors.white,
-        height: 60,
-        animationDuration: const Duration(milliseconds: 400),
-        index: pageIndex.value,
-        items: const <Widget>[
-          Icon(Icons.home, size: 30, color: Colors.black),
-          Icon(Icons.business, size: 30, color: Colors.black),
-          Icon(Icons.person, size: 30, color: Colors.black),
-        ],
-        onTap: (index) => pageIndex.value = index,
-      ),
-      body: Stack(
-        children: [
-          Container(color: Colors.grey[200]),
-          pages[pageIndex.value],
-        ],
-      ),
-    ));
+    return BottomNavigationBar(
+      currentIndex: currentIndex,
+      selectedItemColor: Colors.white,
+      unselectedItemColor: Colors.black,
+      backgroundColor: AppColors.primaryColor,
+      type: BottomNavigationBarType.fixed,
+      onTap: onTabTapped,
+      items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: 'الرئيسية',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.work),
+          label: 'مشاريعي',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.wallet),
+          label: 'المحفظة',
+        ),
+      ],
+    );
   }
 }

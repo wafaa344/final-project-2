@@ -5,6 +5,8 @@ import 'package:rebuild_flat/basics/app_colors.dart';
 import 'package:rebuild_flat/payments/charge_money/payment_controller.dart';
 import 'package:rebuild_flat/payments/submit_top_up/top_up_controller.dart';
 
+import '../../bottom_nav/bottom_nav.dart';
+
 class TopUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -22,6 +24,8 @@ class TopUpPage extends StatelessWidget {
         elevation: 4,
         centerTitle: true,
       ),
+      bottomNavigationBar: const CustomBottomBar(currentIndex: 2),
+
       body: Padding(
         padding: EdgeInsets.all(16),
         child: GetBuilder<TopUpController>(

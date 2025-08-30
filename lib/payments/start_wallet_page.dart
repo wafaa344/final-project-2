@@ -6,6 +6,7 @@ import 'package:rebuild_flat/basics/app_colors.dart';
 import 'package:rebuild_flat/payments/top_up_requests/top_up_request_page.dart';
 
 import '../Routes/routes.dart';
+import '../bottom_nav/bottom_nav.dart';
 
 class StartWalletPage extends StatelessWidget {
   const StartWalletPage({super.key});
@@ -22,6 +23,8 @@ class StartWalletPage extends StatelessWidget {
         elevation: 4, // يظهر ظل واضح
         centerTitle: true,
       ),
+      bottomNavigationBar: const CustomBottomBar(currentIndex: 2),
+
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),

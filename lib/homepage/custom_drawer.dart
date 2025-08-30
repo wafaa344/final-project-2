@@ -5,6 +5,7 @@ import '../basics/app_colors.dart';
 import '../favourite/favourite_page.dart';
 import '../logout/logout_controller.dart';
 import '../myprojects/get_projects_screen.dart';
+import '../payments/order_request/map.dart';
 import '../payments/start_wallet_page.dart';
 import '../payments/transaction/transaction_page.dart';
 import '../profile/profile_page.dart';
@@ -55,18 +56,18 @@ class CustomDrawer extends StatelessWidget {
               leading: const Icon(Icons.person),
               title: const Text('الملف الشخصي'),
               onTap: () {
-               // Get.to(ProfileScreen());
+               // Get.to(MapPage());
                Get.toNamed(AppRoutes.profilepage);
               },
             ),
-            ListTile(
-              leading: const Icon(Icons.precision_manufacturing),
-              title: const Text('مشاريعي'),
-              onTap: () {
-                // Get.to(MyProjectsScreen());
-                Get.toNamed(AppRoutes.projectpage);
-              },
-            ),
+            // ListTile(
+            //   leading: const Icon(Icons.precision_manufacturing),
+            //   title: const Text('مشاريعي'),
+            //   onTap: () {
+            //     // Get.to(MyProjectsScreen());
+            //     Get.toNamed(AppRoutes.projectpage);
+            //   },
+            // ),
             ListTile(
               leading: const Icon(Icons.favorite_sharp),
               title: const Text('المفضلة'),
@@ -75,15 +76,15 @@ class CustomDrawer extends StatelessWidget {
                 Get.toNamed(AppRoutes.favourite);
               },
             ),
-            ListTile(
-              leading: const Icon(Icons.wallet),
-              title: const Text('المحفظة'),
-              onTap: () {
-                Get.to( StartWalletPage());
-
-                // Get.toNamed(AppRoutes.payment_methode);
-              },
-            ),
+            // ListTile(
+            //   leading: const Icon(Icons.wallet),
+            //   title: const Text('المحفظة'),
+            //   onTap: () {
+            //     Get.to( StartWalletPage());
+            //
+            //     // Get.toNamed(AppRoutes.payment_methode);
+            //   },
+            // ),
             ListTile(
               leading: const Icon(Icons.home_work_outlined),
               title: const Text('طلبات الكشف'),

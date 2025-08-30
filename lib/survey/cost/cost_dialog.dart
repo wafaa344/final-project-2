@@ -1,17 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import '../../basics/api_url.dart';
 import '../../basics/app_colors.dart';
 import '../../native_service/secure_storage.dart';
+import '../../payments/order_request/map.dart';
 import '../../payments/order_request/order_service.dart';
 import '../survey_controller.dart';
 
-
 class CostDialog extends StatelessWidget {
   const CostDialog({super.key});
-
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +15,7 @@ class CostDialog extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     final args = Get.arguments as Map<String, dynamic>;
-    final int companyId = args['companyId']; // 👈 جيبها هون
+    final int companyId = args['companyId'];
 
     return Scaffold(
       body: Stack(
@@ -54,7 +50,8 @@ class CostDialog extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Icon(Icons.home_work_rounded, size: width * 0.18, color: const Color(0xFFF77520)),
+                    Icon(Icons.home_work_rounded,
+                        size: width * 0.18, color: const Color(0xFFF77520)),
                     const SizedBox(height: 16),
                     Text(
                       "تكلفة مشروعك التقديرية",
@@ -98,7 +95,8 @@ class CostDialog extends StatelessWidget {
                               ),
                             ),
                             child: Padding(
-                              padding: EdgeInsets.symmetric(vertical: height * 0.015),
+                              padding:
+                              EdgeInsets.symmetric(vertical: height * 0.015),
                               child: Text(
                                 "إلغاء",
                                 style: TextStyle(
@@ -121,29 +119,43 @@ class CostDialog extends StatelessWidget {
                                 return;
                               }
 
-                              final surveyController = Get.find<SurveyController>();
+                              // 👇 روح على صفحة الخريطة وخلي المستخدم يختار موقعه
+                              final selectedPoint =
+                              await Get.to(() => const MapPage());
 
-                              final orderController = Get.put(OrderController(OrderService()));
+                              if (selectedPoint == null) {
+                                Get.snackbar("خطأ", "يجب اختيار موقع على الخريطة");
+                                return;
+                              }
 
-                              // تجهيز الأجوبة للتحويل إلى OrderAnswer
+                              final surveyController =
+                              Get.find<SurveyController>();
+                              final orderController =
+                              Get.put(OrderController(OrderService()));
+
+                              // تجهيز الأجوبة
                               final answers = surveyController.services
-                                  .expand((service) => service.questions.map((q) {
-                                final value = surveyController.answers[q.id];
-                                return OrderAnswer(
-                                  questionServiceId: q.id,
-                                  answer: value.toString(),
-                                );
-                              }))
+                                  .expand((service) =>
+                                  service.questions.map((q) {
+                                    final value =
+                                    surveyController.answers[q.id];
+                                    return OrderAnswer(
+                                      questionServiceId: q.id,
+                                      answer: value.toString(),
+                                    );
+                                  }))
                                   .toList();
 
+                              // ✅ أرسل الإحداثيات مع الطلب
                               final request = OrderRequest(
                                 companyId: companyId,
+                                latitude: selectedPoint.latitude,
+                                longitude: selectedPoint.longitude,
                                 answers: answers,
                               );
 
                               await orderController.createOrder(request);
                             },
-
                             style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.primaryColor,
                               shape: RoundedRectangleBorder(
@@ -151,7 +163,8 @@ class CostDialog extends StatelessWidget {
                               ),
                             ),
                             child: Padding(
-                              padding: EdgeInsets.symmetric(vertical: height * 0.015),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: height * 0.015),
                               child: Text(
                                 "تأكيد الطلب والدفع",
                                 style: TextStyle(

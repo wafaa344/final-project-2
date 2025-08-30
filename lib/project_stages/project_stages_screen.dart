@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rebuild_flat/project_stages/phases_timeline.dart';
-
 import 'package:rebuild_flat/project_stages/project_stage_controller.dart';
 import '../basics/app_colors.dart';
 
@@ -21,16 +21,14 @@ class ProjectPhasesScreen extends StatelessWidget {
 
         appBar: AppBar(
           backgroundColor: AppColors.primaryColor,
-          title: const Text(
+          title:  Text(
             "مراحل المشروع",
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 22,
-            ),
+            style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
           ),
-          iconTheme: const IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.black),
           elevation: 5,
+          centerTitle: true,
+
         ),
         body: Obx(() {
           if (controller.isLoading.value) {

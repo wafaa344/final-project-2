@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rebuild_flat/project_stages/project_stage_model.dart';
 import '../basics/app_colors.dart';
+import '../bottom_nav/bottom_nav.dart';
 import '../payments/confirm_stage/confirm_stage_service.dart';
 import 'objection/objection_controller.dart';
 import 'objection/service_objection.dart';
@@ -24,6 +25,7 @@ class ProjectStageDetailScreen extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: Scaffold(
         backgroundColor: AppColors.background_orange,
+        bottomNavigationBar: const CustomBottomBar(currentIndex: 1),
 
         body: Stack(
           children: [

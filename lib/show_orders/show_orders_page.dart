@@ -142,7 +142,7 @@ class ShowOrdersPage extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            "الموقع: ${order.company.location}",
+                            "الموقع: ${order.company.location ?? 'غير محدد'}",
                             style: GoogleFonts.cairo(
                               fontSize: 14,
                               color: Colors.grey[700],

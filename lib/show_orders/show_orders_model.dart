@@ -3,7 +3,7 @@ class Company {
   final String name;
   final String? email;
   final String phone;
-  final String location;
+  final String? location; // nullable
   final String logo;
 
   Company({
@@ -11,18 +11,18 @@ class Company {
     required this.name,
     this.email,
     required this.phone,
-    required this.location,
+    this.location,
     required this.logo,
   });
 
   factory Company.fromJson(Map<String, dynamic> json) {
     return Company(
       id: json['id'],
-      name: json['name'],
+      name: json['name'] ?? '',
       email: json['email'],
-      phone: json['phone'],
-      location: json['location'],
-      logo: json['logo'],
+      phone: json['phone'] ?? '',
+      location: json['location'], // ممكن تكون null
+      logo: json['logo'] ?? '',
     );
   }
 }
@@ -31,8 +31,8 @@ class ShowOrder {
   final int id;
   final String status;
   final int costOfExamination;
-  final String location;
-  final String budget;
+  final String? location; // nullable
+  final String? budget;   // nullable
   final String createdAt;
   final Company company;
 
@@ -40,8 +40,8 @@ class ShowOrder {
     required this.id,
     required this.status,
     required this.costOfExamination,
-    required this.location,
-    required this.budget,
+    this.location,
+    this.budget,
     required this.createdAt,
     required this.company,
   });
@@ -49,11 +49,11 @@ class ShowOrder {
   factory ShowOrder.fromJson(Map<String, dynamic> json) {
     return ShowOrder(
       id: json['id'],
-      status: json['status'],
-      costOfExamination: json['cost_of_examination'],
-      location: json['location'],
-      budget: json['budget'],
-      createdAt: json['created_at'],
+      status: json['status'] ?? '',
+      costOfExamination: json['cost_of_examination'] ?? 0,
+      location: json['location'], // ممكن null
+      budget: json['budget'],     // مو موجود أحياناً
+      createdAt: json['created_at'] ?? '',
       company: Company.fromJson(json['company']),
     );
   }

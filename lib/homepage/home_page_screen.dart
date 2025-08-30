@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../basics/app_colors.dart';
+import '../bottom_nav/bottom_nav.dart';
 import '../widgets/company_list_widget.dart';
 import '../widgets/header_widget.dart';
 import '../search/search_bar_widget.dart';
@@ -18,6 +19,8 @@ class HomePage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.background_orange,
+        bottomNavigationBar: const CustomBottomBar(currentIndex: 0),
+
         drawer: const CustomDrawer(), // يتم فتحه من HeaderWidget
         body: Column(
           children: [

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rebuild_flat/myprojects/project_detailes.dart';
 import '../basics/app_colors.dart';
+import '../bottom_nav/bottom_nav.dart';
 import 'get_projects_controller.dart';
 
 class MyProjectsScreen extends StatelessWidget {
@@ -18,12 +20,15 @@ class MyProjectsScreen extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: AppColors.primaryColor,
           centerTitle: true,
-          title: const Text(
+          title:  Text(
             'مشاريعي',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
           ),
+          elevation: 4, // يظهر ظل واضح
           iconTheme: const IconThemeData(color: Colors.white),
         ),
+        bottomNavigationBar: const CustomBottomBar(currentIndex: 1),
+
         body: Obx(() {
           if (controller.isLoading.value) {
             return const Center(child: CircularProgressIndicator());

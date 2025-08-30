@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:rebuild_flat/basics/app_colors.dart';
 import 'package:rebuild_flat/payments/top_up_requests/top_up_request_controller.dart';
 import '../../basics/api_url.dart';
+import '../../bottom_nav/bottom_nav.dart';
 
 class TopUpRequestsPage extends StatelessWidget {
   final String imageBaseUrl =
@@ -69,6 +70,8 @@ class TopUpRequestsPage extends StatelessWidget {
           backgroundColor: AppColors.primaryColor,
           centerTitle: true,
         ),
+        bottomNavigationBar: const CustomBottomBar(currentIndex: 2),
+
         body: Obx(() {
           if (controller.isLoading.value) {
             return Center(child: CircularProgressIndicator());

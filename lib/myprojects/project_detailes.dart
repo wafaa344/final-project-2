@@ -1,11 +1,13 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../basics/app_colors.dart';
+import '../bottom_nav/bottom_nav.dart';
 import '../native_service/secure_storage.dart';
 import '../basics/api_url.dart';
 import '../project_stages/project_stages_screen.dart';
@@ -77,9 +79,13 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
 
         appBar: AppBar(
           backgroundColor: AppColors.primaryColor,
-          title: const Text("تفاصيل المشروع", style: TextStyle(color: Colors.white)),
-          iconTheme: const IconThemeData(color: Colors.white),
+          title:  Text("تفاصيل المشروع", style: GoogleFonts.cairo(fontWeight: FontWeight.bold),),
+          iconTheme: const IconThemeData(color: Colors.black),
+          centerTitle: true,
+
         ),
+        bottomNavigationBar: const CustomBottomBar(currentIndex: 1),
+
         body: isLoading
             ? const Center(child: CircularProgressIndicator())
             : project == null

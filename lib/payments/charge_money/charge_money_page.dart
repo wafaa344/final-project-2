@@ -5,6 +5,7 @@ import 'package:rebuild_flat/basics/app_colors.dart';
 import 'package:rebuild_flat/payments/charge_money/payment_controller.dart';
 import 'package:rebuild_flat/payments/charge_money/payment_method_model.dart';
 
+import '../../bottom_nav/bottom_nav.dart';
 import '../submit_top_up/top_up_page.dart';
 
 class PaymentMethodsPage extends StatelessWidget {
@@ -21,6 +22,7 @@ class PaymentMethodsPage extends StatelessWidget {
     elevation: 4, // يظهر ظل واضح
     centerTitle: true,
     ),
+      bottomNavigationBar: const CustomBottomBar(currentIndex: 2),
 
     body: Obx(() {
         if (controller.isLoading.value) {
