@@ -18,8 +18,8 @@ class TopUpPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'شحن المحفظة',
-          style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
-        ),
+            style: GoogleFonts.tajawal(fontWeight: FontWeight.bold,
+              fontSize: 18,)        ),
         backgroundColor: AppColors.primaryColor,
         elevation: 4,
         centerTitle: true,
@@ -165,7 +165,7 @@ class TopUpPage extends StatelessWidget {
                 SizedBox(height: 16),
 
                 controller.isLoading.value
-                    ? Center(child: CircularProgressIndicator())
+                    ? Center(child: CircularProgressIndicator(color: Color(0xfff77520)))
                     : ElevatedButton(
                   onPressed: () => controller.submitTopUp(),
                   style: ElevatedButton.styleFrom(

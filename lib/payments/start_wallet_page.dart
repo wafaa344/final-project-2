@@ -17,7 +17,9 @@ class StartWalletPage extends StatelessWidget {
       backgroundColor: AppColors.background_orange,
 
       appBar: AppBar(
-        title: Text('المحفظة',   style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
+        title: Text('المحفظة', style: GoogleFonts.tajawal(fontWeight: FontWeight.bold,
+          fontSize: 18,
+        ),
         ),
         backgroundColor:AppColors.primaryColor, // برتقالي ثابت
         elevation: 4, // يظهر ظل واضح

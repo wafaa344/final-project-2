@@ -36,8 +36,9 @@ class _MapPageState extends State<MapPage> {
             ),
             children: [
               TileLayer(
-                urlTemplate: "https://a.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png",
-                userAgentPackageName: 'com.example.app',
+                urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+
+                userAgentPackageName: 'com.example.rebuild_flat',
               ),
 
               if (selectedPoint != null)

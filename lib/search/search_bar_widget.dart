@@ -38,7 +38,8 @@ class SearchBarWidget extends StatelessWidget {
                   hintText: 'ابحث هنا...',
                   border: InputBorder.none,
                   icon: controller.isLoading.value
-                      ? const CircularProgressIndicator()
+                      ? const CircularProgressIndicator(color: Color(0xfff77520), )
+
                       : const Icon(Icons.search),
                 ),
               );

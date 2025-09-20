@@ -16,7 +16,8 @@ class PaymentMethodsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.background_orange,
       appBar: AppBar(
-        title: Text('شحن المحفظة', style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
+        title: Text('شحن المحفظة',  style: GoogleFonts.tajawal(fontWeight: FontWeight.bold,
+          fontSize: 18,)
         ),
     backgroundColor:AppColors.primaryColor, // برتقالي ثابت
     elevation: 4, // يظهر ظل واضح
@@ -26,7 +27,7 @@ class PaymentMethodsPage extends StatelessWidget {
 
     body: Obx(() {
         if (controller.isLoading.value) {
-          return Center(child: CircularProgressIndicator());
+          return Center(child: CircularProgressIndicator(color: Color(0xfff77520)));
         }
 
         return SingleChildScrollView(

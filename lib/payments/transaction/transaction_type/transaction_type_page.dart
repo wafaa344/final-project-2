@@ -34,11 +34,8 @@ class TransactionDetailsPage extends StatelessWidget {
         backgroundColor: AppColors.primaryColor,
         title: Text(
           "تفاصيل المعاملة",
-          style: GoogleFonts.cairo(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
-          ),
+        style: GoogleFonts.tajawal(fontWeight: FontWeight.bold,
+        fontSize: 18,)
         ),
         centerTitle: true,
       ),
@@ -78,7 +75,6 @@ class TransactionDetailsPage extends StatelessWidget {
                       ])
                     else if (type == "OrderPayment")
                       buildDetailsList([
-                        {"label": "رقم الطلب", "value": data['order_id']},
                         {"label": "الحالة", "value": data['status']},
                         {"label": "التاريخ", "value": data['date']},
                       ])

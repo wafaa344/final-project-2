@@ -20,11 +20,8 @@ class ShowNotificationsPage extends StatelessWidget {
         elevation: 0,
         title: Text(
           "الإشعارات",
-          style: GoogleFonts.cairo(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
+            style: GoogleFonts.tajawal(fontWeight: FontWeight.bold,
+              fontSize: 18,)
         ),
         centerTitle: true,
       ),
@@ -97,7 +94,7 @@ class ShowNotificationsPage extends StatelessWidget {
                             notif.title,
                             style: GoogleFonts.cairo(
                               fontWeight: FontWeight.bold,
-                              fontSize: 16,
+                              fontSize: 14,
                               color: Colors.black87,
                             ),
                           ),
@@ -105,7 +102,7 @@ class ShowNotificationsPage extends StatelessWidget {
                           Text(
                             notif.body,
                             style: GoogleFonts.cairo(
-                              fontSize: 14,
+                              fontSize: 12,
                               color: Colors.grey[700],
                             ),
                           ),
@@ -113,7 +110,7 @@ class ShowNotificationsPage extends StatelessWidget {
                           Text(
                             notif.createdAt,
                             style: GoogleFonts.cairo(
-                              fontSize: 12,
+                              fontSize: 10,
                               color: Colors.grey[500],
                             ),
                           ),

@@ -20,11 +20,8 @@ class ShowOrdersPage extends StatelessWidget {
         elevation: 0,
         title: Text(
           "طلباتي",
-          style: GoogleFonts.cairo(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
+            style: GoogleFonts.tajawal(fontWeight: FontWeight.bold,
+              fontSize: 18,)
         ),
         centerTitle: true,
       ),
@@ -103,7 +100,7 @@ class ShowOrdersPage extends StatelessWidget {
                                   order.company.name,
                                   style: GoogleFonts.cairo(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 16,
+                                    fontSize: 13,
                                     color: Colors.black87,
                                   ),
                                 ),
@@ -130,21 +127,21 @@ class ShowOrdersPage extends StatelessWidget {
                           Text(
                             "الكلفة: ${order.costOfExamination} ل.س",
                             style: GoogleFonts.cairo(
-                              fontSize: 14,
+                              fontSize: 12,
                               color: Colors.grey[700],
                             ),
                           ),
                           Text(
                             "الهاتف: ${order.company.phone}",
                             style: GoogleFonts.cairo(
-                              fontSize: 14,
+                              fontSize: 12,
                               color: Colors.grey[700],
                             ),
                           ),
                           Text(
                             "الموقع: ${order.company.location ?? 'غير محدد'}",
                             style: GoogleFonts.cairo(
-                              fontSize: 14,
+                              fontSize: 12,
                               color: Colors.grey[700],
                             ),
                           ),

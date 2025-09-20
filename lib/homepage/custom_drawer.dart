@@ -60,6 +60,13 @@ class CustomDrawer extends StatelessWidget {
                Get.toNamed(AppRoutes.profilepage);
               },
             ),
+            ListTile(
+              leading: const Icon(Icons.message_outlined),
+              title: const Text('المحادثات'),
+              onTap: () {
+                Get.toNamed(AppRoutes.conversationsList);
+              },
+            ),
             // ListTile(
             //   leading: const Icon(Icons.precision_manufacturing),
             //   title: const Text('مشاريعي'),

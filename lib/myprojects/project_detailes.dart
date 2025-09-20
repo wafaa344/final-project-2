@@ -79,7 +79,9 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
 
         appBar: AppBar(
           backgroundColor: AppColors.primaryColor,
-          title:  Text("تفاصيل المشروع", style: GoogleFonts.cairo(fontWeight: FontWeight.bold),),
+          title:  Text("تفاصيل المشروع",   style: GoogleFonts.tajawal(fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),),
           iconTheme: const IconThemeData(color: Colors.black),
           centerTitle: true,
 
@@ -87,7 +89,7 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
         bottomNavigationBar: const CustomBottomBar(currentIndex: 1),
 
         body: isLoading
-            ? const Center(child: CircularProgressIndicator())
+            ? const Center(child: CircularProgressIndicator(color: Color(0xfff77520)))
             : project == null
             ? const Center(child: Text("لم يتم العثور على المشروع"))
             : ListView(
@@ -173,7 +175,7 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
             Text(
               project!['project_name'],
               style: const TextStyle(
-                fontSize: 20,
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
@@ -445,22 +447,24 @@ class _ProjectDetailsScreenState extends State<ProjectDetailsScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: List.generate(5, (index) {
                           final reversedIndex = 4 - index;
-                          return IconButton(
-                            icon: Icon(
+                          return GestureDetector(
+                            onTap: () {
+                              ratingController.selectedRating.value = 5 - index;
+                            },
+                            child: Icon(
                               Icons.star,
-                              size: 30,
+                              size: 30, // حجم النجمة
                               color: reversedIndex < ratingController.selectedRating.value
                                   ? AppColors.primaryColor
                                   : Colors.grey,
                             ),
-                            onPressed: () {
-                              ratingController.selectedRating.value = 5 - index;
-                            },
                           );
                         }),
                       ),
                     );
                   }),
+
+
                   const SizedBox(height: 16),
                   Obx(() {
                     return ratingController.isSubmitting.value

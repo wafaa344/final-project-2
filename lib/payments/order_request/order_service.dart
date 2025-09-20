@@ -1,5 +1,6 @@
 // order_model.dart
 // order_service.dart
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../native_service/secure_storage.dart';
 import 'dart:convert';
@@ -107,7 +108,7 @@ class OrderController extends GetxController {
       final result = await service.createOrder(token!, request);
 
       if (result.status) {
-        Get.snackbar("تم", "تم إنشاء الطلب بنجاح");
+        Get.snackbar("تم", "تم إنشاء الطلب بنجاح",backgroundColor: Colors.orange.shade100);
         Get.offAllNamed('/home'); // رجع المستخدم للصفحة الرئيسية
       } else {
         Get.snackbar("خطأ", result.message);

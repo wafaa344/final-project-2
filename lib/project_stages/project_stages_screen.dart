@@ -23,8 +23,9 @@ class ProjectPhasesScreen extends StatelessWidget {
           backgroundColor: AppColors.primaryColor,
           title:  Text(
             "مراحل المشروع",
-            style: GoogleFonts.cairo(fontWeight: FontWeight.bold),
-          ),
+            style: GoogleFonts.tajawal(fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),          ),
           iconTheme: const IconThemeData(color: Colors.black),
           elevation: 5,
           centerTitle: true,
@@ -32,7 +33,7 @@ class ProjectPhasesScreen extends StatelessWidget {
         ),
         body: Obx(() {
           if (controller.isLoading.value) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator(color: Color(0xfff77520)));
           }
 
           if (controller.stages.isEmpty) {

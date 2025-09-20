@@ -117,10 +117,18 @@ class CompanyDetails extends StatelessWidget {
                           const SizedBox(height: 20),
 
                           Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("اسم الشركة : ${company.name }", style: Theme.of(context).textTheme.titleMedium),
+                              Expanded(
+                                child: Text(
+                                  "اسم الشركة : ${company.name}",
+                                  style: Theme.of(context).textTheme.titleMedium,
+                                  softWrap: true,
+                                ),
+                              ),
                             ],
                           ),
+
                           const SizedBox(height: 10),
 
                           Row(
@@ -161,8 +169,8 @@ class CompanyDetails extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 5),
-                           Text(
-                           company.about,
+                          Text(
+                            company.about,
                             style: TextStyle(fontSize: 14),
                           ),
                           const SizedBox(height: 20),
@@ -222,17 +230,17 @@ class CompanyDetails extends StatelessWidget {
                           ),
                           const SizedBox(height: 15),
 
-                    SizedBox(
-                      height: 120,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: company.services.length,
-                        itemBuilder: (context, index) {
-                          final service = company.services[index];
-                          return _serviceCard(service.name, Icons.home_repair_service);
-                        },
-                      ),
-                    ),
+                          SizedBox(
+                            height: 120,
+                            child: ListView.builder(
+                              scrollDirection: Axis.horizontal,
+                              itemCount: company.services.length,
+                              itemBuilder: (context, index) {
+                                final service = company.services[index];
+                                return _serviceCard(service);
+                              },
+                            ),
+                          ),
 
 
                         ],
@@ -249,34 +257,77 @@ class CompanyDetails extends StatelessWidget {
     );
   }
 
-  Widget _serviceCard(String title, IconData icon) {
+  Widget _serviceCard(Service service) {
     return Padding(
       padding: const EdgeInsets.only(left: 10),
-      child: Column(
-        children: [
-        Container(
-        width: 80,
-        height: 80,
-        decoration: BoxDecoration(
-          color: Colors.orange[100],
-          borderRadius: BorderRadius.circular(15),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.orange.withOpacity(0.2),
-              blurRadius: 4,
-              offset: const Offset(0, 2),
+      child: GestureDetector(
+        onTap: () {
+          _showServiceDetailsDialog(service);
+        },
+        child: Column(
+          children: [
+
+            Container(
+              width: 80,
+              height: 80,
+              decoration: BoxDecoration(
+                color: Colors.orange[100],
+                borderRadius: BorderRadius.circular(15),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.orange.withOpacity(0.2),
+                    blurRadius: 4,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: Icon(Icons.home_repair_service, size: 40, color: Colors.orange),
+            ),
+            const SizedBox(height: 8),
+            SizedBox(
+              width: 90,
+              child: Text(
+                service.name,
+                style: const TextStyle(fontSize: 14),
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ],
         ),
-        child: Icon(icon, size: 40, color: Colors.orange),
-      ),
-
-          const SizedBox(height: 8),
-          Text(title, style: const TextStyle(fontSize: 14)),
-        ],
       ),
     );
   }
+
+// تابع عرض تفاصيل الخدمة مع Animation
+  void _showServiceDetailsDialog(Service service) {
+    showGeneralDialog(
+      context: Get.context!,
+      barrierDismissible: true,
+      barrierLabel: "Service Details",
+      pageBuilder: (context, animation1, animation2) {
+        return const SizedBox.shrink(); // لا نستخدمها هنا
+      },
+      transitionBuilder: (context, animation, secondaryAnimation, child) {
+        return ScaleTransition(
+          scale: CurvedAnimation(parent: animation, curve: Curves.easeOutBack),
+          child: AlertDialog(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            title: Text(service.name, textAlign: TextAlign.center),
+            content: Text(service.description, textAlign: TextAlign.right),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: const Text("إغلاق"),
+              ),
+            ],
+          ),
+        );
+      },
+      transitionDuration: const Duration(milliseconds: 400),
+    );
+  }
+
 
   void _showProjectSelectionDialog(BuildContext context, int companyId) async {
     final controller = Get.find<PreviousProjectsController>();
@@ -300,8 +351,8 @@ class CompanyDetails extends StatelessWidget {
               itemBuilder: (context, index) {
                 final project = projects[index];
                 return ListTile(
-                  leading: const Icon(Icons.work, color: Colors.orange),
-                  title: Text(project.projectName),
+                    leading: const Icon(Icons.work, color: Colors.orange),
+                    title: Text(project.projectName),
                     onTap: () {
                       Navigator.of(context).pop();
                       Navigator.push(
@@ -381,7 +432,7 @@ class CompanyDetails extends StatelessWidget {
                   }
 
                   ,
-            child: const Text("التالي", style: TextStyle(color: Colors.black)),
+                  child: const Text("التالي", style: TextStyle(color: Colors.black)),
                 ),
               ],
             );

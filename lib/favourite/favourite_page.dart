@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rebuild_flat/basics/app_colors.dart';
 import '../basics/api_url.dart';
+import '../bottom_nav/bottom_nav.dart';
 import 'fav-controller.dart';
 
 class FavoritePage extends StatelessWidget {
@@ -11,9 +13,12 @@ class FavoritePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const CustomBottomBar(currentIndex: 0),
+
       backgroundColor: AppColors.background_orange,
       appBar: AppBar(
-        title: Text('المفضلة'),
+        title: Text('المفضلة', style: GoogleFonts.tajawal(fontWeight: FontWeight.bold,
+          fontSize: 18,),),
         centerTitle: true,
         backgroundColor: AppColors.primaryColor,
       ),

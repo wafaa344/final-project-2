@@ -25,6 +25,9 @@ class Project {
   final int id;
   final String companyName;
   final String projectName;
+  final String customerName;
+  final int employeeId;
+  final String employeeName;
   int? rating; // ✅ صار قابل للتغيير (not final) وقابل أن يكون null
 
 
@@ -32,13 +35,20 @@ class Project {
     required this.id,
     required this.companyName,
     required this.projectName,
+    required this.customerName,
+    required this.employeeId,
+    required this.employeeName
+
   });
 
   factory Project.fromJson(Map<String, dynamic> json) {
     return Project(
-      id: json['id'],
-      companyName: json['company_name'],
-      projectName: json['project_name'],
+        id: json['id'],
+        companyName: json['company_name'],
+        projectName: json['project_name'],
+        customerName: json['customer_name'],
+        employeeId:  json['employee_id'],
+        employeeName: json['employee_name']
       // rating: json['rating'],
     );
   }

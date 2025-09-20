@@ -1,6 +1,7 @@
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:rebuild_flat/basics/app_colors.dart';
 import 'package:rebuild_flat/payments/top_up_requests/top_up_request_controller.dart';
@@ -65,8 +66,8 @@ class TopUpRequestsPage extends StatelessWidget {
         appBar: AppBar(
           title: Text(
             "طلبات شحن المحفظة",
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
+              style: GoogleFonts.tajawal(fontWeight: FontWeight.bold,
+                fontSize: 18,)          ),
           backgroundColor: AppColors.primaryColor,
           centerTitle: true,
         ),
@@ -74,7 +75,7 @@ class TopUpRequestsPage extends StatelessWidget {
 
         body: Obx(() {
           if (controller.isLoading.value) {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator(color: Color(0xfff77520)));
           }
 
           if (controller.requests.isEmpty) {

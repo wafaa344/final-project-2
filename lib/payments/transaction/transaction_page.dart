@@ -42,11 +42,8 @@ class TransactionsPage extends StatelessWidget {
         elevation: 0,
         title: Text(
           "المعاملات",
-          style: GoogleFonts.cairo(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
+            style: GoogleFonts.tajawal(fontWeight: FontWeight.bold,
+              fontSize: 18,)
         ),
         centerTitle: true,
       ),
@@ -122,7 +119,7 @@ class TransactionsPage extends StatelessWidget {
                             label,
                             style: GoogleFonts.cairo(
                               fontWeight: FontWeight.bold,
-                              fontSize: 16,
+                              fontSize: 14,
                               color: Colors.black87,
                             ),
                           ),
@@ -136,7 +133,7 @@ class TransactionsPage extends StatelessWidget {
                                   Text("من:",
                                       style: GoogleFonts.cairo(
                                           color: Colors.grey[600],
-                                          fontSize: 13)),
+                                          fontSize: 12)),
                                   const SizedBox(height: 4),
                                   Text("إلى:",
                                       style: GoogleFonts.cairo(
@@ -153,7 +150,7 @@ class TransactionsPage extends StatelessWidget {
                                       tx['payer_name'] ?? '',
                                       style: GoogleFonts.cairo(
                                         color: Colors.grey[700],
-                                        fontSize: 13,
+                                        fontSize: 12,
                                       ),
                                       overflow: TextOverflow.ellipsis,
                                     ),
@@ -162,7 +159,7 @@ class TransactionsPage extends StatelessWidget {
                                       tx['receiver_name'] ?? '',
                                       style: GoogleFonts.cairo(
                                         color: Colors.grey[700],
-                                        fontSize: 13,
+                                        fontSize: 12,
                                       ),
                                       overflow: TextOverflow.ellipsis,
                                     ),

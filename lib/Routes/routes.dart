@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import '../PreviousProjects/PreviousProjectsBinding.dart';
 import '../bottom_nav/bottom_nav.dart';
+import '../chat/Conversations/conversations_binding.dart';
+import '../chat/Conversations/conversations_screen.dart';
 import '../favourite/favourite_binding.dart';
 import '../favourite/favourite_page.dart';
 import '../homepage/home_page_screen.dart';
@@ -46,7 +48,7 @@ class AppRoutes {
   static const transaction = '/transactions';
   static const showorders = '/showorders';
   static const shownotification = '/shownotification';
-
+  static const conversationsList = '/conversationsList';
 
 
   static final routes = [
@@ -118,6 +120,11 @@ class AppRoutes {
       name: shownotification,
       page: () => ShowNotificationsPage(),
       binding: ShowNotificationBinding(),
+    ),
+    GetPage(
+      name: conversationsList,
+      page: () => ChatsPage(),
+      binding: ConversationBinding(),
     ),
 
 

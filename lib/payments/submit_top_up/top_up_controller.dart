@@ -25,7 +25,7 @@ class TopUpController extends GetxController {
 
       // عرض رسالة نجاح
       Get.snackbar("نجاح", "تم اختيار الصورة بنجاح",
-          snackPosition: SnackPosition.BOTTOM);
+          snackPosition: SnackPosition.BOTTOM,backgroundColor: Colors.orange.shade100);
 
       update(); // لتحديث واجهة عرض الصورة
     }

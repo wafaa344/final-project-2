@@ -260,7 +260,7 @@ class ProjectStageDetailScreen extends StatelessWidget {
                                       showDialog(
                                         context: context,
                                         barrierDismissible: false,
-                                        builder: (_) => const Center(child: CircularProgressIndicator()),
+                                        builder: (_) => const Center(child: CircularProgressIndicator(color: Color(0xfff77520))),
                                       );
 
                                       // 📨 استدعاء API الدفع
@@ -420,7 +420,7 @@ class ProjectStageDetailScreen extends StatelessWidget {
 
                           Obx(() {
                             if (objectionController.isLoading.value) {
-                              return const Center(child: CircularProgressIndicator());
+                              return const Center(child: CircularProgressIndicator(color: Color(0xfff77520)));
                             } else if (objectionController.objections.isEmpty) {
                               return const Text("لا يوجد اعتراضات حتى الآن");
                             } else {

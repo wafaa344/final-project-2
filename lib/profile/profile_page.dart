@@ -48,7 +48,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
         body: Obx(() {
           if (controller.isLoading.value) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator(color: Color(0xfff77520)));
           }
 
           final user = controller.user.value;
